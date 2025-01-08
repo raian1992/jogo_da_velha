@@ -57,8 +57,10 @@ function handleWin(regions){
     const playername = document.getElementById(turnPlayer).value
     document.querySelector('h2').innerHTML=playername + ' Venceu!'
 }
-
 function hendleBoardClick(ev){
+  const valor =document.querySelector('h2').innerText
+  if(!valor.includes(' Venceu!'))
+  {
     const span = ev.currentTarget //N.N
     const region=span.dataset.region //N.N
     const rowColumnPair=region.split('.') //["N","N"]
@@ -93,10 +95,11 @@ function hendleBoardClick(ev){
         turnPlayer= turnPlayer==='player1' ? 'player2' : 'player1'
         updateTitle()
     }
-    else
+    else 
     {
         document.querySelector('h2').innerHTML='Empate!'
     }
+  }
 }
 
 document.getElementById('start').addEventListener('click', initializeGame)
